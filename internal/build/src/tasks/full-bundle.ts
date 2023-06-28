@@ -28,6 +28,10 @@ import type { Plugin } from 'rollup'
 
 const banner = `/*! ${PKG_BRAND_NAME} v${version} */\n`
 
+// 构建浏览器可直接引用的完整bundle，与buildModules逻辑类似，只是将除peerDependencies(即vue)外的所有依赖都打包进去。另外，字体文件是单独打包的，CDN引用的时候单独引用
+
+// 打包完整bundle
+// 具体逻辑参考internal/build/src/tasks/build-modules.ts
 async function buildFullEntry(minify: boolean) {
   const plugins: Plugin[] = [
     ElementPlusAlias(),
@@ -71,7 +75,7 @@ async function buildFullEntry(minify: boolean) {
   const bundle = await rollup({
     input: path.resolve(epRoot, 'index.ts'),
     plugins,
-    external: await generateExternal({ full: true }),
+    external: await generateExternal({ full: true }), // 只将peerDependencies(即vue)标记为外部模块
     treeshake: true,
   })
   await writeBundles(bundle, [
@@ -103,6 +107,7 @@ async function buildFullEntry(minify: boolean) {
   ])
 }
 
+// 打包字体文件
 async function buildFullLocale(minify: boolean) {
   const files = await glob(`**/*.ts`, {
     cwd: path.resolve(localeRoot, 'lang'),

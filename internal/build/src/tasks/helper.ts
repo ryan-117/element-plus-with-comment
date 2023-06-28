@@ -23,6 +23,9 @@ import type {
   ReWebTypesType,
 } from 'components-helper'
 
+// 使用components-helper，从markdown文档中提取组件的属性、事件、插槽、方法等信息，生成组件的代码提示文件(vetur、webstorm、volar)
+// https://github.com/tolking/components-helper/tree/main
+
 const typeMap = {
   vue: ['Component', 'VNode', 'CSSProperties', 'StyleValue'],
 }

@@ -7,7 +7,7 @@ defineProps<{
   isHome?: boolean
 }>()
 
-const lang = useLang()
+const lang = useLang() // 从页面路径取语言 如 https://element-plus.org/zh-CN 则lang: 'zh-CN'
 const homeLang = computed(() => homeLocale[lang.value])
 </script>
 

@@ -11,6 +11,7 @@ export const generateExternal = async (options: { full: boolean }) => {
       packages.push('@vue', ...dependencies)
     }
 
+    // 标记所有element-plus的dependencies、peerDependencies以及'@vue'开头的包为external(外部包)
     return [...new Set(packages)].some(
       (pkg) => id === pkg || id.startsWith(`${pkg}/`)
     )
