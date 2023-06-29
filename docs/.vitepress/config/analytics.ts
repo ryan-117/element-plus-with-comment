@@ -4,12 +4,12 @@ export const sendEvent = (
   value?: any,
   category?: string
 ): void => {
-  const gtag = (window as any).gtag
-  if (gtag) {
-    gtag('event', action, {
-      event_label: label,
-      event_value: value,
-      event_category: category,
-    })
-  }
+  // const gtag = (window as any).gtag
+  // if (gtag) {
+  //   gtag('event', action, {
+  //     event_label: label,
+  //     event_value: value,
+  //     event_category: category,
+  //   })
+  // }
 }

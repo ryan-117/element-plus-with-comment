@@ -1,24 +1,15 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 import MarkdownIt from 'markdown-it'
 import { useToc } from '../../composables/use-toc'
 import { useActiveSidebarLinks } from '../../composables/active-bar'
-
-import sponsorLocale from '../../../i18n/component/sponsor.json'
-import { useLang } from '../../composables/lang'
-import SponsorsButton from '../sponsors/sponsors-button.vue'
-import SponsorRightTextList from '../sponsors/right-richtext-list.vue'
-import SponsorRightLogoSmallList from '../sponsors/right-logo-small-list.vue'
 import tag from '../../../plugins/tag'
-// import SponsorLarge from '../vp-sponsor-large.vue'
 
 const localMd = MarkdownIt().use(tag)
 const headers = useToc()
 const marker = ref()
 const container = ref()
 useActiveSidebarLinks(container, marker)
-const lang = useLang()
-const sponsor = computed(() => sponsorLocale[lang.value])
 </script>
 
 <template>
@@ -54,23 +45,7 @@ const sponsor = computed(() => sponsorLocale[lang.value])
         </li>
       </ul>
       <div ref="marker" class="toc-marker" />
-      <!-- <SponsorLarge
-        class="mt-8 toc-ads flex flex-col"
-        item-style="width: 180px; height: 55px;"
-      /> -->
-      <p class="text-14px font-300 color-$text-color-secondary">
-        {{ sponsor.sponsoredBy }}
-      </p>
-      <sponsors-button class="sponsors-button mt-4 w-100%" />
-      <sponsor-right-logo-small-list />
-      <sponsor-right-text-list />
     </nav>
   </aside>
 </template>
-<style scoped lang="scss">
-.sponsors-button:deep {
-  button {
-    width: 100%;
-  }
-}
-</style>
+<style scoped lang="scss"></style>
