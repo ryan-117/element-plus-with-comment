@@ -8,8 +8,10 @@ import type { Theme } from 'vitepress'
 
 export default define<Theme>({
   NotFound,
-  Layout: VPApp,
+  Layout: VPApp, // 每个页面的layout
+  // 对应用进行扩展配置
   enhanceApp: ({ app }) => {
+    // 注册element-plus
     app.use(ElementPlus)
 
     globals.forEach(([name, Comp]) => {

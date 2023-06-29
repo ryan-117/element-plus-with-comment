@@ -45,7 +45,7 @@ export const config: UserConfig = {
   title: 'Element Plus',
   description: 'a Vue 3 based component library for designers and developers',
   lastUpdated: true,
-  head,
+  head, // 在<head>添加标签，包括图标、【语言相关脚本】、黑暗模式相关脚本
   themeConfig: {
     repo: REPO_PATH,
     docsBranch: REPO_BRANCH,
