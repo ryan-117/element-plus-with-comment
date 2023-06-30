@@ -3,6 +3,10 @@
     "text": "Basic",
     "children": [
       {
+        "link": "/aaa",
+        "text": "Aaa"
+      },
+      {
         "link": "/button",
         "text": "Button"
       },

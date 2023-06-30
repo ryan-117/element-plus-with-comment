@@ -1,12 +1,17 @@
 @use 'config';
 
 // BEM support Func
+
+// 将选择器转换为字符串表示
+// $mySelector: h1;
+// $stringSelector: selectorToString($mySelector); // 返回一个字符串 "h1"
 @function selectorToString($selector) {
   $selector: inspect($selector);
   $selector: str-slice($selector, 2, -2);
   @return $selector;
 }
 
+// 判断$selector中是否存在 "--"
 @function containsModifier($selector) {
   $selector: selectorToString($selector);
 
@@ -17,6 +22,7 @@
   }
 }
 
+// 判断$selector中是否以"is-"开头
 @function containWhenFlag($selector) {
   $selector: selectorToString($selector);
 
@@ -27,6 +33,7 @@
   }
 }
 
+// 判断$selector中是否包含伪类（冒号":"）
 @function containPseudoClass($selector) {
   $selector: selectorToString($selector);
 
@@ -37,6 +44,7 @@
   }
 }
 
+// 判断$selector中是否包含特殊的嵌套规则: 包含"--" || 以"is-"开头 || 包含伪类
 @function hitAllSpecialNestRule($selector) {
   @return containsModifier($selector) or containWhenFlag($selector) or
     containPseudoClass($selector);
@@ -54,6 +62,8 @@
   @return $name;
 }
 
+// ----------------------------上面为内部工具函数，可以不用关注，以下是真正对外使用的函数----------------------------
+
 // getCssVarName('button', 'text-color') => '--el-button-text-color'
 @function getCssVarName($args...) {
   @return joinVarName($args);
@@ -69,6 +79,7 @@
   @return var(#{joinVarName($args)}, #{$default});
 }
 
+// 生成BEM规范的类名
 // bem('block', 'element', 'modifier') => 'el-block__element--modifier'
 @function bem($block, $element: '', $modifier: '') {
   $name: config.$namespace + config.$common-separator + $block;

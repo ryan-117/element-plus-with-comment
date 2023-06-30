@@ -1,0 +1,8 @@
+// 通过 @use 加载的模块不管被引用了多少次，都只会在编译后输出一次到 css 中。但是使用 @import 多次引入同一模块，会反复输出到 css 中
+@use 'mixins/mixins' as *;
+@use 'mixins/var' as *;
+@use 'common/var' as *;
+
+.aaa {
+  color: red;
+}

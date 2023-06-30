@@ -42,6 +42,7 @@ languages.forEach((lang) => {
 })
 
 export const config: UserConfig = {
+  base: '/brand-cli/',
   title: 'Element Plus',
   description: 'a Vue 3 based component library for designers and developers',
   lastUpdated: true,

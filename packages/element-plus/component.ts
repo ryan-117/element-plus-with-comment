@@ -1,3 +1,4 @@
+import { ElAaa } from '@element-plus/components/aaa'
 import { ElAffix } from '@element-plus/components/affix'
 import { ElAlert } from '@element-plus/components/alert'
 import { ElAutocomplete } from '@element-plus/components/autocomplete'
@@ -106,6 +107,7 @@ import { ElUpload } from '@element-plus/components/upload'
 import type { Plugin } from 'vue'
 
 export default [
+  ElAaa,
   ElAffix,
   ElAlert,
   ElAutocomplete,
